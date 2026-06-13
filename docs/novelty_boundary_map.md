@@ -1,13 +1,21 @@
 # Novelty Boundary Map
 
 ## Crowded Territory
-- Bigger data/model scaling.
-- New benchmark only.
-- Generic active learning or uncertainty.
-- Combining a planner with a learned policy without a new state/action object.
 
-## Claimed Boundary
-Object permanence under self occlusion keeps action-critical alternatives explicit until a physical observation collapses them.
+- Generic object tracking under occlusion.
+- Kalman, particle, and learned state estimation.
+- Scene memory for robot manipulation.
+- Uncertainty-aware planning.
+- Benchmark-only contributions.
 
-## What Would Falsify The Claim
-If observed-only baselines match the adverse-mode coverage and closed-loop success of the proposed branch-aware mechanism, the paper should be revised or killed.
+## Claimed Boundary Tested
+
+Robot self-occlusion is treated as a special failure mode: the system uses robot-link visibility geometry to know when the robot itself, not object disappearance, hides the target.
+
+## v4 Evidence Outcome
+
+The boundary is promising but not decisive. On combined stress, occlusion-aware permanence reaches 0.905 success, while the closest non-oracle baseline reaches 0.786. However, the paired difference is 0.119 +/- 0.123, and the ablation grid keeps no-self-mask and other variants close to the full method.
+
+## What Falsified Submission Readiness
+
+The method does not prove a decisive, statistically robust advantage over the closest baseline, and the ablations do not isolate the self-occlusion mechanism strongly enough for an ICLR-main claim.
