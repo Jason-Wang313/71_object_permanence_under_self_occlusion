@@ -2,18 +2,18 @@
 
 Paper: 71 object_permanence_under_self_occlusion
 
-Existing v2 decision: KILL_ARCHIVE
+Prior v3 decision: KILL_ARCHIVE
 
-Gate verdict: KILL_ARCHIVE
+v4 gate verdict: KILL_ARCHIVE
 
-Evidence digest: 8a5e933b3b120c71
+Evidence digest: 5dbfa3fef555a7f4
 
 Fatal blockers:
-- Synthetic-only evidence.
-- Template-generated experiment and writing.
-- No real robot or high-fidelity benchmark.
-- No trained WAM/model checkpoint.
-- No implemented real baselines.
-- No manual exhaustive related-work synthesis.
+- The proposed method does not clear the closest non-oracle baseline decisively in paired statistics.
+- Ablations are too close to prove that self-occlusion geometry and branch belief are necessary.
+- False disappearance remains high for the proposed method on combined stress.
+- No real-robot validation.
+- No external public benchmark comparison.
+- Manual related-work synthesis remains incomplete.
 
-The only honest main-conference-safe decision is to archive rather than overclaim.
+The honest main-conference-safe decision is to archive the paper as a real MuJoCo negative result rather than submit a non-decisive mechanism claim.

@@ -1,16 +1,19 @@
-Submission-hardening experiment for paper 71 object_permanence_under_self_occlusion
-Seven seeds, 600 episodes per seed, strong baselines, ablations, stress sweep, and negative cases.
-observed_only_behavior_clone hidden_mode_shift mean_success=0.4126 ci95=0.0216 tail=0.5874
-observed_only_behavior_clone combined_stress mean_success=0.3305 ci95=0.0137 tail=0.6695
-data_augmentation_wam hidden_mode_shift mean_success=0.4722 ci95=0.0096 tail=0.5278
-data_augmentation_wam combined_stress mean_success=0.4188 ci95=0.0111 tail=0.5812
-scalar_uncertainty_planner hidden_mode_shift mean_success=0.5667 ci95=0.0134 tail=0.4333
-scalar_uncertainty_planner combined_stress mean_success=0.5060 ci95=0.0130 tail=0.4940
-ensemble_disagreement_planner hidden_mode_shift mean_success=0.5960 ci95=0.0171 tail=0.4040
-ensemble_disagreement_planner combined_stress mean_success=0.5538 ci95=0.0142 tail=0.4462
-conformal_risk_filter hidden_mode_shift mean_success=0.5945 ci95=0.0171 tail=0.4055
-conformal_risk_filter combined_stress mean_success=0.5471 ci95=0.0104 tail=0.4529
-proposed_branch_mechanism hidden_mode_shift mean_success=0.6874 ci95=0.0283 tail=0.3126
-proposed_branch_mechanism combined_stress mean_success=0.6648 ci95=0.0170 tail=0.3352
-oracle_branch_upper_bound hidden_mode_shift mean_success=0.7541 ci95=0.0282 tail=0.2459
-oracle_branch_upper_bound combined_stress mean_success=0.7391 ci95=0.0101 tail=0.2609
+Paper 71 object_permanence_under_self_occlusion real MuJoCo rebuild
+Terminal recommendation: KILL_ARCHIVE
+Reason: occlusion_aware_permanence does not clear strongest non-oracle baseline no_self_mask_ablation decisively on combined_stress (proposed=0.905, best_baseline=0.786, paired diff=0.119+/-0.123).
+Main eval rows: 3360
+Ablation rows: 420
+Stress rows: 2016
+Seeds: [0, 1, 2, 3, 4, 5, 6]
+Eval episodes per seed/split: 12
+Runtime seconds: 1097.45
+
+Combined-stress summary:
+oracle_state success=1.00000 ci95=0.00000 occ_error=0.00040 false_disappearance=0.00000
+occlusion_aware_permanence success=0.90476 ci95=0.08304 occ_error=0.05424 false_disappearance=0.57473
+no_self_mask_ablation success=0.78571 ci95=0.07855 occ_error=0.06936 false_disappearance=0.69931
+learned_occlusion_regressor success=0.71428 ci95=0.09991 occ_error=0.07689 false_disappearance=0.20194
+visibility_gated_kalman success=0.25000 ci95=0.11821 occ_error=0.20199 false_disappearance=0.00185
+particle_belief_tracker success=0.23810 ci95=0.08304 occ_error=0.13112 false_disappearance=0.04866
+last_seen_memory success=0.19048 ci95=0.09900 occ_error=0.16813 false_disappearance=0.42236
+ensemble_uncertainty_planner success=0.10714 ci95=0.04667 occ_error=0.21550 false_disappearance=0.66825

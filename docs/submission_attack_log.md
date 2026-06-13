@@ -4,6 +4,13 @@ Paper: 71 object_permanence_under_self_occlusion
 
 This v3 pass applies the ICLR main-conference bar. The result is an honest archive decision, not a workshop resubmission.
 
+## v4 Real-Evidence Rebuild
+Attack: Even after replacing the synthetic scaffold with MuJoCo self-occlusion rollouts, the method must decisively clear the closest learned/tracking baseline and ablations.
+
+Verdict: Fatal. Occlusion-aware permanence reaches 0.905 success on combined stress versus 0.786 for the no-self-mask ablation, but the paired difference is 0.119 +/- 0.123, so the effect is not decisive. Ablations are also close.
+
+Action: Keep KILL_ARCHIVE and frame the artifact as a real MuJoCo negative result.
+
 ## ICLR Main Gate Round 1
 Attack: No real-robot validation.
 
