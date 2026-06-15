@@ -13,3 +13,4 @@
 11. Exact Downloads PDF path: `C:/Users/wangz/Downloads/71.pdf`
 12. GitHub URL: https://github.com/Jason-Wang313/71_object_permanence_under_self_occlusion
 13. Confirmation: no visible Desktop copy was requested or made.
+14. 2026-06-15 continuation audit: source compilation, CSV integrity, result scale, PDF/BibTeX rebuild, Downloads-only artifact placement, and public GitHub target were rechecked. Decision remains KILL_ARCHIVE.
