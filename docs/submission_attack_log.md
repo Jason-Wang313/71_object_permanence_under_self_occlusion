@@ -2,7 +2,14 @@
 
 Paper: 71 object_permanence_under_self_occlusion
 
-This v3 pass applies the ICLR main-conference bar. The result is an honest archive decision, not a workshop resubmission.
+This v4/continuation pass applies the ICLR main-conference bar to the real MuJoCo rebuild. The result is an honest archive decision, not a workshop resubmission.
+
+## 2026-06-15 Continuation Audit
+Attack: A promising mean win is not enough for ICLR-main readiness; the self-occlusion mechanism must decisively beat the closest baseline and survive ablation pressure.
+
+Verdict: Fatal. The verified CSVs contain 3,360 main rollouts, 420 ablation rollouts, and 2,016 stress rollouts across 7 seeds. On combined stress, `occlusion_aware_permanence` reaches 0.905 success versus 0.786 for `no_self_mask_ablation`, but the paired success difference is only 0.119 +/- 0.123. At stress level 1.00, it beats the learned regressor in mean success, 0.768 versus 0.661, but the local evidence still lacks decisive paired separation and external validation. The ablation grid is close: `occlusion_full` reaches 0.914, while `ablate_no_self_mask` and `ablate_no_uncertainty_inflation` each reach 0.886.
+
+Action: Keep KILL_ARCHIVE and preserve the reproducible negative/near-miss result without claiming ICLR-main readiness.
 
 ## v4 Real-Evidence Rebuild
 Attack: Even after replacing the synthetic scaffold with MuJoCo self-occlusion rollouts, the method must decisively clear the closest learned/tracking baseline and ablations.
