@@ -1,112 +1,236 @@
 \documentclass{article}
 \usepackage{iclr2026_conference,times}
 \input{math_commands.tex}
-\usepackage{hyperref}
-\usepackage{url}
-\usepackage{booktabs}
-\usepackage{graphicx}
+\usepackage{amsmath,amssymb,booktabs,graphicx,longtable,array,url,xcolor}
+\usepackage[
+  colorlinks=false,
+  pdfborder={0 0 1.8},
+  citebordercolor={0 1 0},
+  linkbordercolor={0 0.7 0},
+  urlbordercolor={0 0.7 0}
+]{hyperref}
+\input{generated/result_macros.tex}
 
-\title{Object Permanence Under Self-Occlusion: A MuJoCo Negative Result}
-\author{Anonymous Authors}
+\title{Object Permanence Under Robot Self-Occlusion:\\A Frozen MuJoCo Negative Result}
+\author{Anonymous authors\\Paper under double-blind review}
+
+\newcommand{\vfive}{occlusion-aware permanence v5}
+\newcommand{\vvfour}{occlusion-aware permanence v4}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Robots frequently hide objects from their own cameras while reaching, pushing, or grasping.
-This paper tests whether robot self-occlusion should be modeled as a distinct object-permanence failure mode rather than handled by generic tracking uncertainty.
-We rebuild the original synthetic idea into a MuJoCo benchmark with camera-derived visibility, robot self-occlusion geometry, target and distractor objects, hidden object displacement, false detections, tracking baselines, learned baselines, ablations, and stress sweeps.
-Across 3,360 main evaluation rollouts, 420 ablation rollouts, and 2,016 stress rollouts, occlusion-aware permanence is the best non-oracle method in mean combined-stress success, reaching 0.905 versus 0.786 for the closest non-oracle baseline.
-However, the paired success difference is 0.119 with a 0.123 confidence interval, and the ablations remain close.
-We therefore mark the ICLR-main decision as \textbf{KILL/ARCHIVE}: the evidence is real and useful, but it is not decisive enough for a submission claim.
+Robots often hide task-relevant objects with their own bodies, grippers, or tools.
+This paper asks whether explicit robot self-occlusion geometry is a necessary object-permanence mechanism for closed-loop manipulation, or whether strong learned and filtering baselines already extract the useful signal.
+We rebuild the original short near-miss report into a frozen MuJoCo benchmark with \MainRows{} main method-evaluation rows, \AblationRows{} ablation rows, \StressRows{} stress rows, \SeedRows{} seed summaries, \PairwiseRows{} paired comparisons, and \NegativeRows{} negative cases.
+The benchmark includes long self-occlusions, end-effector occlusions, distractor swaps, near-identical distractors, hidden contact drift, false reappearance, camera dropout bursts, stale-memory traps, embodiment-control shift, high-symmetry layouts, combined stress, and combined extreme stress.
+The result is negative.
+On hard regimes, \vfive{} reaches \VFiveHardSuccess{} success, while the strongest non-oracle baseline, \BestHardMethod{}, reaches \BestHardSuccess{}.
+On combined and extreme regimes, \vfive{} reaches \VFiveCombinedSuccess{} while \BestCombinedMethod{} reaches \BestCombinedSuccess{}.
+At a fixed 10 percent failure budget, \vfive{} reaches \VFiveFixedRiskSuccess{} while \BestFixedRiskMethod{} reaches \BestFixedRiskSuccess{}.
+The frozen terminal decision is \textbf{\PaperDecision{}}.
+We archive the result because explicit self-occlusion geometry is plausible, useful in some regimes, and still not isolated as the necessary mechanism under hostile review.
 \end{abstract}
 
 \section{Question}
-The research bet is that self-occlusion by the robot is not just ordinary missing data.
-When the robot's own arm or tool hides the target, the system can in principle know that the target should persist behind the robot geometry.
-This might improve closed-loop manipulation under self-occlusion, distractors, and hidden target displacement.
-The idea is related to robot scene memory, object tracking, manipulation world models, and failure-aware control \citep{prior1,prior2,prior3,prior4,prior5}.
+Object permanence is an intuitive requirement for robot manipulation: a target should not disappear from the robot's state merely because the robot hid it.
+The tempting claim is that robot self-occlusion should be modeled as a special physical event rather than as generic missing observations.
+The stronger ICLR-main claim is harder.
+It requires showing that a self-occlusion mechanism beats Kalman-style filtering \citep{kalman1960new}, particle belief tracking \citep{gordon1993novel,thrun2005probabilistic}, learned hidden-state predictors \citep{breiman2001random,pedregosa2011scikit}, and object-centric manipulation baselines \citep{min2025asimo,ren2024object,daniel2026latent}.
 
-The ICLR-main question is sharper: does an explicit self-occlusion permanence mechanism decisively outperform strong tracking and learned baselines?
-Our answer is negative.
+The old Paper 71 result was a near miss.
+The proposed method was ahead in mean combined-stress success, but the paired interval crossed zero and the no-self-mask ablation stayed close.
+This version is therefore not a polishing pass.
+It is an adversarial rebuild.
+The benchmark is enlarged, the baselines are strengthened, the ablations are made more hostile, and the final protocol is frozen before the full run.
+If the self-occlusion mechanism fails, the paper is killed honestly.
 
-\section{Benchmark}
-We implement a MuJoCo tabletop scene with a controlled planar tool, a target object, a distractor object, and a fixed camera model.
-Visibility is computed from the robot base-to-tool segment: if the target lies behind the robot link in the camera projection, the target measurement is removed.
-Task families include nominal visibility, self-occlusion, distractor swap, object displacement under occlusion, and combined stress.
-Combined stress adds long self-occlusions, false distractor detections, camera noise, target displacement, and reduced actuator authority.
+\section{Problem Setup}
+Each episode contains a robot tool state $x_t$, a target object $o_t$, a distractor object $d_t$, and an observation $y_t$ from a fixed camera.
+The observation can be missing because the target is outside the visibility model, dropped by the camera, or hidden by the robot's own swept segment.
+Let $m_t \in \{0,1\}$ indicate self-occlusion by the robot geometry, and let $f_t$ indicate a false distractor detection.
+A method maintains a belief $b_t$ and selects a tool target $u_t$.
+The closed-loop task succeeds if the tool reaches the true target and avoids committing to the distractor.
 
-Each rollout logs true object state, visibility, false detections, belief estimate, final reach distance, localization error during occlusion, false disappearance, wrong-object contact, and trajectory samples.
-The released runner writes raw rollouts, per-seed metrics, paired statistics, ablations, stress sweeps, negative cases, and figures.
+The key distinction is that self-occlusion is not arbitrary missingness.
+When $m_t=1$, the robot has privileged kinematic evidence that the target may still be behind its own body.
+However, this does not automatically justify a new mechanism.
+A learned regressor or particle filter can also learn the same conditional structure if the benchmark exposes enough regularity.
+This is the core falsification pressure.
 
-\section{Methods}
-We compare eight methods.
-\textbf{Last-seen memory} holds the last visible target position.
-\textbf{Visibility-gated Kalman} propagates position and increases uncertainty during occlusion.
-\textbf{Particle tracker} maintains a particle belief over target position.
-\textbf{Learned occlusion regressor} predicts hidden target position from simulated occlusion traces.
-\textbf{Ensemble uncertainty planner} averages perturbed predictors and performs viewing moves under uncertainty.
-\textbf{Occlusion-aware permanence} uses robot self-occlusion geometry, learned hidden-state prediction, and branch beliefs over target persistence.
-\textbf{No-self-mask ablation} removes the self-occlusion geometry.
-\textbf{Oracle state} uses the true target state.
+\paragraph{Metrics.}
+We report closed-loop success, false disappearance, wrong-object contact, identity switch rate, mean localization error during occlusion, reacquisition latency, diagnostic steps, calibration error, fixed-risk success, stress-sweep performance, paired seed differences, ablations, and negative cases.
+False disappearance is counted when belief uncertainty exceeds the deployment threshold during occlusion.
+Identity switch is counted when the belief is pulled closer to the distractor after a false detection.
 
-\section{Results}
-Table~\ref{tab:combined} shows the decisive combined-stress split.
-Occlusion-aware permanence has the best non-oracle mean success, reaching 0.905.
-The closest non-oracle baseline, no-self-mask ablation, reaches 0.786.
-However, the paired success difference is only 0.119 with a 0.123 95 percent confidence interval.
-That interval crosses zero, so the effect is not decisive under the submission gate.
+\section{Method Under Test}
+\vfive{} keeps a branch belief over hidden target hypotheses.
+One branch follows the previous belief and velocity; another branch uses a learned hidden-state predictor; a third branch is damped by the self-occlusion geometry and contact-drift model.
+False detections are rejected when they are inconsistent with the self-mask and recent identity trace.
+During high uncertainty, the method may take a diagnostic viewing motion rather than greedily reaching.
 
-\begin{table}[h]
+This object is deliberately modest.
+It is not a deep video model, not a foundation policy, and not a claim about all object permanence.
+It tests whether explicit robot self-occlusion geometry is needed in a controlled manipulation setting.
+The implementation is CPU-only and uses MuJoCo for deterministic physics \citep{todorov2012mujoco}.
+
+\section{Baselines}
+The comparison set is designed to make the proposed mechanism uncomfortable.
+It includes last-seen memory; visibility-gated Kalman filtering; particle belief tracking; a polynomial ridge hidden-state predictor; random forest and histogram-gradient hidden-state regressors; identity-consistency tracking; an ensemble uncertainty planner; a risk-averse particle planner; a lightweight POMDP-style belief planner inspired by manipulation under object uncertainty \citep{pajarinen2023pomdp}; the original v4 mechanism; a no-self-mask ablation; and an oracle true-state upper bound.
+
+The learned baselines are important.
+If a random forest or histogram-gradient model can infer the target under occlusion from the same compact features, then the explicit branch mechanism is not isolated.
+Similarly, if the v4 replay matches or beats v5, the new components are not justified.
+
+\section{Frozen Protocol}
+The full run was frozen in \path{docs/paper71_protocol_freeze_20260621.md}.
+It uses 8 seeds, 6 main episodes per seed/split, 15 main splits, 14 main methods, 4 ablation splits, 12 ablation methods, 3 stress splits, 5 stress levels, and 12 stress methods.
+No gate was changed after the development probe.
+
+The frozen gates are:
+the hard-regime success margin must exceed the strongest non-oracle baseline by 0.030;
+the paired lower bound against the strongest combined/extreme baseline must be positive;
+the combined/extreme success margin must exceed 0.030;
+false disappearance and wrong-object contact cannot regress by more than 0.020;
+fixed-risk success at a 10 percent failure budget cannot be worse than the best baseline;
+maximum-stress success must be within 0.030 of the best non-oracle method;
+and every removed-component ablation must fall at least 0.020 success below full v5 or be clearly worse on safety/calibration.
+
+\section{Main Results}
+\input{generated/hard_aggregate_table.tex}
+
+The hard-regime aggregate shows why the result is a near miss rather than a win.
+\vfive{} is useful: it reaches \VFiveHardSuccess{} success.
+But the strongest non-oracle baseline, \BestHardMethod{}, reaches \BestHardSuccess{}.
+That is not enough separation for a submission claim under the frozen margin.
+The mechanism is plausible, yet the experiment does not show it is necessary.
+
+\input{generated/combined_aggregate_table.tex}
+\input{generated/selected_split_table.tex}
+
+The combined/extreme aggregate is more damaging.
+\vfive{} reaches \VFiveCombinedSuccess{}, while \BestCombinedMethod{} reaches \BestCombinedSuccess{}.
+This matters because the intended contribution is robustness under hard self-occlusion, not nominal visible reaching.
+When stress combines false reappearance, hidden drift, near-identical distractors, and control limits, the v4 replay remains too competitive.
+
+\section{Fixed-Risk Analysis}
+\input{generated/fixed_risk_table.tex}
+
+A method that wins by tolerating false disappearance or identity switches is not deployable.
+The fixed-risk table therefore asks how much success remains when the maximum failure budget is fixed at 10 percent over hard splits.
+\vfive{} reaches \VFiveFixedRiskSuccess{}, while \BestFixedRiskMethod{} reaches \BestFixedRiskSuccess{}.
+This is a fatal gate: the explicit self-occlusion mechanism cannot claim safer object permanence if a learned baseline occupies the safer operating point.
+
+\section{Stress Sweep}
+\input{generated/stress_table.tex}
+
+Stress sweeps increase occlusion width, dropout, camera noise, false detections, hidden drift, and control limits.
+They test whether the method degrades gracefully as the self-occlusion story becomes most relevant.
+The maximum-stress gate does not rescue v5.
+Even when the qualitative story fits the setting, the frozen result says the mechanism is not isolated strongly enough.
+
+\begin{figure}[t]
 \centering
-\caption{Combined-stress MuJoCo results. Success and false disappearance are averaged over seven seeds.}
-\label{tab:combined}
-\begin{tabular}{lccc}
-\toprule
-Method & Success & Occlusion error & False disappearance \\
-\midrule
-oracle state & 1.000 & 0.000 & 0.000 \\
-occlusion-aware permanence & 0.905 & 0.054 & 0.575 \\
-no-self-mask ablation & 0.786 & 0.069 & 0.699 \\
-learned occlusion regressor & 0.714 & 0.077 & 0.202 \\
-visibility-gated Kalman & 0.250 & 0.202 & 0.002 \\
-particle tracker & 0.238 & 0.131 & 0.049 \\
-last-seen memory & 0.190 & 0.168 & 0.422 \\
-ensemble uncertainty & 0.107 & 0.216 & 0.668 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-At maximum stress, occlusion-aware permanence reaches 0.768 success, compared with 0.661 for the learned regressor.
-This supports the relevance of robot self-occlusion geometry, but not strongly enough to claim submission readiness.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.92\linewidth]{../figures/self_occlusion_success_by_split.png}
-\caption{Success by split. The proposed method is promising on combined stress but not decisively separated from the closest ablation.}
+\includegraphics[width=\linewidth]{../figures/self_occlusion_success_by_split.png}
+\caption{Success by split across all main methods. Strong learned and v4 replay baselines remain uncomfortable competitors.}
 \label{fig:success}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.78\linewidth]{../figures/self_occlusion_stress_sweep.png}
-\caption{Stress sweep. Occlusion-aware permanence remains ahead of learned/tracking baselines at high stress, but the overall evidence is still not ICLR-main decisive.}
+\includegraphics[width=\linewidth]{../figures/self_occlusion_false_disappearance.png}
+\caption{False disappearance by split. This is a safety-relevant failure mode, not just a tracking diagnostic.}
+\label{fig:false-disappearance}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{../figures/self_occlusion_stress_sweep.png}
+\caption{Stress sweep success. The frozen maximum-stress gate is applied before seeing the final result.}
 \label{fig:stress}
 \end{figure}
 
-\section{Ablations and Failures}
-The ablation grid is the main reason for archiving.
-The full method reaches 0.914 success on the ablation combined-stress grid, while removing the self mask reaches 0.886 and removing uncertainty inflation also reaches 0.886.
-These gaps are too small to prove that the proposed state object is necessary.
-False disappearance is also high for the proposed method on combined stress, at 0.575, indicating imperfect belief calibration during long occlusions.
+\section{Ablations}
+\input{generated/ablation_table.tex}
 
-Negative cases include hidden target displacement beyond the branch update, distractor detections during self-occlusion, and wrong-object contact after belief drift.
-These are exactly the failure modes a submission would need to solve, not hide.
+The ablation table is the most direct mechanism test.
+Full v5 is not cleanly separated from removals of branch belief, distractor filtering, false-detection rejection, reacquisition guard, tail-risk objective, or uncertainty inflation.
+Some removals improve success or remove false disappearance without enough compensating harm.
+That means the branch story is not established by the benchmark.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.84\linewidth]{../figures/self_occlusion_ablation_success.png}
+\caption{Ablation success over frozen hard ablation splits. The method fails the component-necessity gate.}
+\label{fig:ablation}
+\end{figure}
+
+\section{Negative Cases}
+\input{generated/negative_cases_table.tex}
+
+The negative cases are not outliers to hide.
+They expose the scientific failure modes: hidden displacement can exceed the branch update; false reappearance can compete with target permanence; prolonged stale memory can remain confident in the wrong place; and identity switches can occur before the diagnostic motion recovers visibility.
+These are precisely the cases a submission would need to solve.
+
+\section{Theory: When Self-Occlusion Geometry Helps}
+\paragraph{Proposition 1: self-mask informativeness.}
+Let $Y_t$ be the camera observation and $M_t$ the known robot self-occlusion event.
+If $P(Y_t=\emptyset\mid M_t=1,o_t=o)$ differs across object hypotheses only through the known robot geometry, then a belief update that conditions on $M_t$ can reduce posterior entropy relative to a missing-at-random filter.
+This supports the intuition behind v5.
+
+\paragraph{Proposition 2: learned-baseline non-identifiability.}
+If the feature vector supplied to a learned baseline contains the same last-visible state, tool state, occlusion age, noise level, false-detection flag, and drift proxy used by the explicit branch mechanism, then a sufficiently flexible regressor can approximate the branch posterior mean on the benchmark distribution.
+In that case, a local benchmark cannot identify the explicit branch object as necessary unless v5 beats the learned baseline under held-out stress and safety gates.
+This is the failure observed here.
+
+\paragraph{Proposition 3: ablation necessity.}
+Let $M$ be full v5 and $M_{-j}$ remove component $j$.
+If $S(M)-S(M_{-j})<\delta$ and $M_{-j}$ is not worse on false disappearance, wrong-object contact, identity switch, or calibration, then component $j$ is not locally supported.
+The frozen ablation table violates this condition for several components.
+
+\section{Related Work}
+This paper sits between probabilistic tracking, partial-observability planning, and object-centric robot world models.
+Kalman and particle filters remain strong baselines for occluded state estimation \citep{kalman1960new,gordon1993novel,thrun2005probabilistic}.
+Robot manipulation under object uncertainty motivates belief-space and POMDP-style baselines \citep{pajarinen2023pomdp}.
+Object-centric and scene-graph systems provide broader context for maintaining persistent object state in manipulation and navigation \citep{min2025asimo,loo2025open,honerkamp2024language,ren2024object,liu2026oawam,daniel2026latent}.
+Visuo-haptic and keypoint approaches show that occluded object state can also be recovered through learned or multimodal representation \citep{rustler2023shape,hartz2022keypoints}.
+This work does not beat those families; it creates a controlled negative audit of one explicit self-occlusion mechanism.
 
 \section{Decision}
-This rebuild upgrades the artifact from a synthetic archive to a real MuJoCo negative result.
-The self-occlusion mechanism is plausible and sometimes helpful, but it does not pass the strict ICLR-main gate: the paired effect against the closest baseline is not decisive, ablations remain close, and no real robot or public benchmark validates the visibility model.
-The honest terminal decision is therefore \textbf{KILL/ARCHIVE}.
+The frozen terminal reason is:
+\begin{quote}\small\raggedright
+\PaperReason{}\par
+\end{quote}
+The correct decision is \textbf{\PaperDecision{}}.
+This is not a writing failure.
+It is a scientific result: explicit self-occlusion permanence is a plausible mechanism, but this benchmark does not prove it is necessary over strong learned, v4 replay, and ablated baselines.
+
+\clearpage
+\appendix
+\section{Frozen Protocol}
+The plan-first document is \path{docs/paper71_expanded_submission_plan_20260621.md}.
+The development log is \path{docs/paper71_development_log_20260621.md}.
+The protocol freeze is \path{docs/paper71_protocol_freeze_20260621.md}.
+No split, method, metric, or gate was changed after the protocol freeze.
+
+\section{Full Split-Method Metrics}
+\input{generated/full_metrics_longtable.tex}
+
+\section{Full Aggregate Metrics}
+\input{generated/full_aggregate_longtable.tex}
+
+\section{All Seed Metrics}
+\input{generated/all_seed_metrics_longtable.tex}
+
+\section{Full Paired Comparisons}
+\input{generated/full_pairwise_longtable.tex}
+
+\section{Full Ablation Metrics}
+\input{generated/full_ablation_longtable.tex}
+
+\section{Full Stress Sweep Metrics}
+\input{generated/full_stress_longtable.tex}
 
 \bibliography{references}
 \bibliographystyle{iclr2026_conference}

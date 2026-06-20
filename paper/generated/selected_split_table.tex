@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\caption{Selected methods on combined extreme stress.}
+\label{tab:selected-split}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Method & Success & False disp. & Wrong obj. & Id switch & Occ. err. \\
+\midrule
+oracle state & 1.000 & 0.000 & 0.000 & 0.000 & 0.001 \\
+learned occlusion regressor & 0.708 & 0.227 & 0.000 & 0.531 & 0.086 \\
+occlusion aware permanence v4 & 0.708 & 0.604 & 0.000 & 0.040 & 0.071 \\
+hist gradient occlusion regressor & 0.688 & 0.223 & 0.000 & 0.352 & 0.079 \\
+occlusion aware permanence v5 & 0.667 & 0.521 & 0.021 & 0.088 & 0.064 \\
+random forest occlusion regressor & 0.667 & 0.228 & 0.000 & 0.138 & 0.071 \\
+no self mask ablation & 0.583 & 0.633 & 0.000 & 0.076 & 0.086 \\
+pomdp style belief planner & 0.354 & 0.321 & 0.000 & 0.089 & 0.107 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering
+\caption{Occlusion-aware permanence v5 ablations aggregated over frozen ablation splits.}
+\label{tab:ablation}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Ablation & Success & False disp. & Wrong obj. & Id switch & Occ. err. \\
+\midrule
+ablate no reacquisition guard & 0.906 & 0.524 & 0.000 & 0.040 & 0.049 \\
+ablate no false detection rejection & 0.891 & 0.529 & 0.000 & 0.063 & 0.051 \\
+ablate no tail risk objective & 0.891 & 0.521 & 0.008 & 0.033 & 0.052 \\
+ablate no uncertainty inflation & 0.867 & 0.000 & 0.000 & 0.052 & 0.050 \\
+occlusion full v5 & 0.867 & 0.528 & 0.000 & 0.026 & 0.052 \\
+ablate no branch belief & 0.852 & 0.523 & 0.000 & 0.072 & 0.052 \\
+ablate no distractor filter & 0.852 & 0.529 & 0.000 & 0.082 & 0.053 \\
+occlusion aware permanence v4 & 0.844 & 0.616 & 0.000 & 0.018 & 0.051 \\
+ablate no identity filter & 0.820 & 0.614 & 0.000 & 0.067 & 0.051 \\
+learned only branch & 0.812 & 0.228 & 0.000 & 0.040 & 0.057 \\
+ablate no self mask & 0.805 & 0.661 & 0.000 & 0.057 & 0.067 \\
+ablate no contact update & 0.773 & 0.526 & 0.000 & 0.031 & 0.057 \\
+\bottomrule
+\end{tabular}
+\end{table}

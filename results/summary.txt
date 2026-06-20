@@ -1,19 +1,29 @@
-Paper 71 object_permanence_under_self_occlusion real MuJoCo rebuild
-Terminal recommendation: KILL_ARCHIVE
-Reason: occlusion_aware_permanence does not clear strongest non-oracle baseline no_self_mask_ablation decisively on combined_stress (proposed=0.905, best_baseline=0.786, paired diff=0.119+/-0.123).
-Main eval rows: 3360
-Ablation rows: 420
-Stress rows: 2016
-Seeds: [0, 1, 2, 3, 4, 5, 6]
-Eval episodes per seed/split: 12
-Runtime seconds: 1097.45
+Paper 71 object_permanence_under_self_occlusion expanded v5 MuJoCo rebuild
+Terminal decision: KILL_ARCHIVE
+Terminal reason: v5 does not beat strongest hard-regime baseline occlusion_aware_permanence_v4 by 0.030 (v5=0.929, best=0.908); paired lower bound against occlusion_aware_permanence_v4 is not positive (-0.042+/-0.135); v5 does not beat strongest combined/extreme baseline occlusion_aware_permanence_v4 by 0.030 (v5=0.719, best=0.740); fixed-risk gate fails at budget 0.10 (v5=0.000, best=random_forest_occlusion_regressor 0.933); ablation gate fails because ablate_no_branch_belief, ablate_no_distractor_filter, ablate_no_false_detection_rejection, ablate_no_reacquisition_guard, ablate_no_tail_risk_objective, ablate_no_uncertainty_inflation matches or beats full v5
+Main eval rows: 10080
+Ablation rows: 1536
+Stress rows: 4320
+Seeds: [0, 1, 2, 3, 4, 5, 6, 7]
+Eval episodes per seed/split: 6
+Active splits: ['nominal', 'short_self_occlusion', 'long_self_occlusion', 'end_effector_occlusion', 'distractor_swap', 'near_identical_distractors', 'object_displacement', 'hidden_contact_drift', 'false_reappearance', 'camera_dropout_burst', 'stale_memory_trap', 'embodiment_control_shift', 'high_symmetry_layout', 'combined_stress', 'combined_extreme_stress']
+Ablation splits: ['combined_stress', 'combined_extreme_stress', 'false_reappearance', 'stale_memory_trap']
+Stress splits: ['combined_stress', 'combined_extreme_stress', 'false_reappearance']
+Stress levels: [0.0, 0.25, 0.5, 0.75, 1.0]
+Runtime seconds: 6890.40
 
 Combined-stress summary:
-oracle_state success=1.00000 ci95=0.00000 occ_error=0.00040 false_disappearance=0.00000
-occlusion_aware_permanence success=0.90476 ci95=0.08304 occ_error=0.05424 false_disappearance=0.57473
-no_self_mask_ablation success=0.78571 ci95=0.07855 occ_error=0.06936 false_disappearance=0.69931
-learned_occlusion_regressor success=0.71428 ci95=0.09991 occ_error=0.07689 false_disappearance=0.20194
-visibility_gated_kalman success=0.25000 ci95=0.11821 occ_error=0.20199 false_disappearance=0.00185
-particle_belief_tracker success=0.23810 ci95=0.08304 occ_error=0.13112 false_disappearance=0.04866
-last_seen_memory success=0.19048 ci95=0.09900 occ_error=0.16813 false_disappearance=0.42236
-ensemble_uncertainty_planner success=0.10714 ci95=0.04667 occ_error=0.21550 false_disappearance=0.66825
+oracle_state success=1.00000 ci95=0.00000 occ_error=0.00045 false_disappearance=0.00000
+occlusion_aware_permanence_v4 success=0.77083 ci95=0.13718 occ_error=0.05903 false_disappearance=0.59319
+occlusion_aware_permanence_v5 success=0.77083 ci95=0.13718 occ_error=0.06248 false_disappearance=0.50401
+random_forest_occlusion_regressor success=0.75000 ci95=0.15122 occ_error=0.06738 false_disappearance=0.22461
+hist_gradient_occlusion_regressor success=0.72917 ci95=0.13718 occ_error=0.06846 false_disappearance=0.22246
+learned_occlusion_regressor success=0.72917 ci95=0.15043 occ_error=0.07849 false_disappearance=0.19481
+no_self_mask_ablation success=0.72917 ci95=0.05977 occ_error=0.06960 false_disappearance=0.64642
+pomdp_style_belief_planner success=0.52083 ci95=0.13005 occ_error=0.08568 false_disappearance=0.36183
+particle_belief_tracker success=0.20833 ci95=0.14803 occ_error=0.12830 false_disappearance=0.07428
+identity_consistency_tracker success=0.16667 ci95=0.08730 occ_error=0.22245 false_disappearance=0.14045
+visibility_gated_kalman success=0.14583 ci95=0.07402 occ_error=0.19229 false_disappearance=0.00241
+last_seen_memory success=0.12500 ci95=0.10237 occ_error=0.16328 false_disappearance=0.43460
+ensemble_uncertainty_planner success=0.06250 ci95=0.05978 occ_error=0.27826 false_disappearance=0.80528
+risk_averse_particle_planner success=0.00000 ci95=0.00000 occ_error=0.04040 false_disappearance=0.16897

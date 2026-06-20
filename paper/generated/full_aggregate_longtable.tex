@@ -1,0 +1,75 @@
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{0.8pt}
+\renewcommand{\arraystretch}{0.88}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.18\linewidth} >{\raggedright\arraybackslash}p{0.20\linewidth} >{\raggedleft\arraybackslash}p{0.055\linewidth} >{\raggedleft\arraybackslash}p{0.060\linewidth} >{\raggedleft\arraybackslash}p{0.055\linewidth} >{\raggedleft\arraybackslash}p{0.045\linewidth} >{\raggedleft\arraybackslash}p{0.055\linewidth}@{}}
+\caption{Full aggregate metrics.}\label{tab:full-aggregate}\\
+\toprule
+Group & Method & Succ. & False & Wrong & ID & Err. \\
+\midrule
+\endfirsthead
+\toprule
+Group & Method & Succ. & False & Wrong & ID & Err. \\
+\midrule
+\endhead
+all splits & ensemble uncertainty planner & 0.304 & 0.412 & 0.007 & 0.130 & 0.161 \\
+all splits & hist gradient occlusion regressor & 0.914 & 0.213 & 0.000 & 0.217 & 0.052 \\
+all splits & identity consistency tracker & 0.315 & 0.070 & 0.000 & 0.456 & 0.202 \\
+all splits & last seen memory & 0.376 & 0.421 & 0.008 & 0.919 & 0.137 \\
+all splits & learned occlusion regressor & 0.883 & 0.204 & 0.000 & 0.570 & 0.058 \\
+all splits & no self mask ablation & 0.915 & 0.652 & 0.000 & 0.025 & 0.048 \\
+all splits & occlusion aware permanence v4 & 0.926 & 0.598 & 0.000 & 0.019 & 0.043 \\
+all splits & occlusion aware permanence v5 & 0.943 & 0.514 & 0.001 & 0.015 & 0.040 \\
+all splits & oracle state & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+all splits & particle belief tracker & 0.467 & 0.043 & 0.000 & 0.607 & 0.102 \\
+all splits & pomdp style belief planner & 0.618 & 0.159 & 0.000 & 0.035 & 0.064 \\
+all splits & random forest occlusion regressor & 0.924 & 0.212 & 0.000 & 0.072 & 0.049 \\
+all splits & risk averse particle planner & 0.501 & 0.091 & 0.003 & 0.004 & 0.030 \\
+all splits & visibility gated kalman & 0.354 & 0.021 & 0.000 & 0.569 & 0.177 \\
+hard splits & ensemble uncertainty planner & 0.196 & 0.497 & 0.009 & 0.141 & 0.174 \\
+hard splits & hist gradient occlusion regressor & 0.892 & 0.218 & 0.000 & 0.233 & 0.057 \\
+hard splits & identity consistency tracker & 0.252 & 0.082 & 0.000 & 0.492 & 0.215 \\
+hard splits & last seen memory & 0.295 & 0.419 & 0.010 & 0.930 & 0.151 \\
+hard splits & learned occlusion regressor & 0.854 & 0.208 & 0.000 & 0.584 & 0.064 \\
+hard splits & no self mask ablation & 0.894 & 0.650 & 0.000 & 0.031 & 0.053 \\
+hard splits & occlusion aware permanence v4 & 0.908 & 0.608 & 0.000 & 0.023 & 0.046 \\
+hard splits & occlusion aware permanence v5 & 0.929 & 0.523 & 0.002 & 0.018 & 0.044 \\
+hard splits & oracle state & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+hard splits & particle belief tracker & 0.373 & 0.053 & 0.000 & 0.678 & 0.116 \\
+hard splits & pomdp style belief planner & 0.585 & 0.197 & 0.000 & 0.040 & 0.070 \\
+hard splits & random forest occlusion regressor & 0.905 & 0.219 & 0.000 & 0.084 & 0.053 \\
+hard splits & risk averse particle planner & 0.378 & 0.096 & 0.003 & 0.005 & 0.033 \\
+hard splits & visibility gated kalman & 0.283 & 0.014 & 0.000 & 0.615 & 0.189 \\
+combined and extreme & ensemble uncertainty planner & 0.083 & 0.834 & 0.052 & 0.272 & 0.316 \\
+combined and extreme & hist gradient occlusion regressor & 0.708 & 0.223 & 0.000 & 0.321 & 0.074 \\
+combined and extreme & identity consistency tracker & 0.167 & 0.176 & 0.000 & 0.553 & 0.217 \\
+combined and extreme & last seen memory & 0.135 & 0.451 & 0.062 & 0.845 & 0.165 \\
+combined and extreme & learned occlusion regressor & 0.719 & 0.211 & 0.000 & 0.544 & 0.082 \\
+combined and extreme & no self mask ablation & 0.656 & 0.640 & 0.000 & 0.072 & 0.078 \\
+combined and extreme & occlusion aware permanence v4 & 0.740 & 0.598 & 0.000 & 0.048 & 0.065 \\
+combined and extreme & occlusion aware permanence v5 & 0.719 & 0.512 & 0.010 & 0.072 & 0.063 \\
+combined and extreme & oracle state & 1.000 & 0.000 & 0.000 & 0.000 & 0.001 \\
+combined and extreme & particle belief tracker & 0.125 & 0.118 & 0.000 & 0.736 & 0.133 \\
+combined and extreme & pomdp style belief planner & 0.438 & 0.341 & 0.000 & 0.084 & 0.096 \\
+combined and extreme & random forest occlusion regressor & 0.708 & 0.226 & 0.000 & 0.115 & 0.069 \\
+combined and extreme & risk averse particle planner & 0.042 & 0.315 & 0.021 & 0.027 & 0.052 \\
+combined and extreme & visibility gated kalman & 0.198 & 0.002 & 0.000 & 0.663 & 0.187 \\
+identity hard & ensemble uncertainty planner & 0.354 & 0.297 & 0.000 & 0.108 & 0.119 \\
+identity hard & hist gradient occlusion regressor & 0.948 & 0.210 & 0.000 & 0.263 & 0.055 \\
+identity hard & identity consistency tracker & 0.255 & 0.080 & 0.000 & 0.622 & 0.187 \\
+identity hard & last seen memory & 0.266 & 0.410 & 0.000 & 0.939 & 0.139 \\
+identity hard & learned occlusion regressor & 0.906 & 0.208 & 0.000 & 0.539 & 0.060 \\
+identity hard & no self mask ablation & 0.938 & 0.662 & 0.000 & 0.027 & 0.044 \\
+identity hard & occlusion aware permanence v4 & 0.964 & 0.605 & 0.000 & 0.015 & 0.041 \\
+identity hard & occlusion aware permanence v5 & 0.974 & 0.520 & 0.000 & 0.008 & 0.040 \\
+identity hard & oracle state & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+identity hard & particle belief tracker & 0.500 & 0.001 & 0.000 & 0.637 & 0.099 \\
+identity hard & pomdp style belief planner & 0.620 & 0.098 & 0.000 & 0.033 & 0.059 \\
+identity hard & random forest occlusion regressor & 0.948 & 0.215 & 0.000 & 0.089 & 0.049 \\
+identity hard & risk averse particle planner & 0.536 & 0.059 & 0.000 & 0.000 & 0.028 \\
+identity hard & visibility gated kalman & 0.370 & 0.001 & 0.000 & 0.674 & 0.169 \\
+\bottomrule
+\end{longtable}
+\endgroup

@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\caption{hard splits aggregate results. Higher success is better; lower failure metrics are better.}
+\label{tab:hard_splits}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Method & Success & False disp. & Wrong obj. & Id switch & Occ. err. \\
+\midrule
+oracle state & 1.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+occlusion aware permanence v5 & 0.929 & 0.523 & 0.002 & 0.018 & 0.044 \\
+occlusion aware permanence v4 & 0.908 & 0.608 & 0.000 & 0.023 & 0.046 \\
+random forest occlusion regressor & 0.905 & 0.219 & 0.000 & 0.084 & 0.053 \\
+no self mask ablation & 0.894 & 0.650 & 0.000 & 0.031 & 0.053 \\
+hist gradient occlusion regressor & 0.892 & 0.218 & 0.000 & 0.233 & 0.057 \\
+learned occlusion regressor & 0.854 & 0.208 & 0.000 & 0.584 & 0.064 \\
+pomdp style belief planner & 0.585 & 0.197 & 0.000 & 0.040 & 0.070 \\
+risk averse particle planner & 0.378 & 0.096 & 0.003 & 0.005 & 0.033 \\
+particle belief tracker & 0.373 & 0.053 & 0.000 & 0.678 & 0.116 \\
+\bottomrule
+\end{tabular}
+\end{table}

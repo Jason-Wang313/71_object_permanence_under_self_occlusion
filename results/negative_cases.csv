@@ -1,13 +1,13 @@
-case,split,seed,episode,success,wrong_object_contact,mean_error_during_occlusion,false_detection_steps,lesson
-0,combined_stress,3,8,0,0,0.09472,22,distractor detections during self-occlusion competed with target permanence
-1,combined_stress,0,9,0,0,0.09370,20,distractor detections during self-occlusion competed with target permanence
-2,combined_stress,4,10,0,0,0.09251,26,distractor detections during self-occlusion competed with target permanence
-3,combined_stress,3,6,0,0,0.08841,21,distractor detections during self-occlusion competed with target permanence
-4,combined_stress,4,4,0,0,0.08003,20,distractor detections during self-occlusion competed with target permanence
-5,combined_stress,4,3,0,0,0.07783,26,distractor detections during self-occlusion competed with target permanence
-6,object_displacement,5,9,0,0,0.07754,12,distractor detections during self-occlusion competed with target permanence
-7,combined_stress,6,5,0,0,0.07592,27,distractor detections during self-occlusion competed with target permanence
-8,combined_stress,3,1,0,0,0.07329,18,distractor detections during self-occlusion competed with target permanence
-9,object_displacement,6,2,0,0,0.06342,12,distractor detections during self-occlusion competed with target permanence
-10,object_displacement,0,5,0,0,0.06310,9,distractor detections during self-occlusion competed with target permanence
-11,object_displacement,2,7,0,0,0.04706,8,distractor detections during self-occlusion competed with target permanence
+case,split,seed,episode,success,wrong_object_contact,mean_error_during_occlusion,false_detection_steps,identity_switch_rate,lesson
+0,combined_extreme_stress,2,4,0,0,0.13223,31,0.03226,distractor detections during self-occlusion competed with target permanence
+1,combined_extreme_stress,0,3,0,0,0.12348,32,0.03125,distractor detections during self-occlusion competed with target permanence
+2,combined_extreme_stress,4,4,0,1,0.11402,38,0.02632,belief error caused wrong-object contact before recovery
+3,combined_stress,5,3,0,0,0.11351,29,0.00000,distractor detections during self-occlusion competed with target permanence
+4,combined_stress,4,0,0,0,0.11203,27,0.00000,distractor detections during self-occlusion competed with target permanence
+5,combined_extreme_stress,6,0,0,0,0.10959,39,0.00000,distractor detections during self-occlusion competed with target permanence
+6,combined_stress,2,1,0,0,0.10776,26,0.00000,distractor detections during self-occlusion competed with target permanence
+7,combined_extreme_stress,0,2,0,0,0.10497,31,0.00000,distractor detections during self-occlusion competed with target permanence
+8,combined_stress,0,4,0,0,0.10330,20,0.00000,distractor detections during self-occlusion competed with target permanence
+9,combined_stress,3,3,0,0,0.10319,28,0.00000,distractor detections during self-occlusion competed with target permanence
+10,combined_extreme_stress,4,5,0,0,0.10196,37,0.67568,distractor detections during self-occlusion competed with target permanence
+11,combined_extreme_stress,2,3,0,0,0.10113,34,0.85294,distractor detections during self-occlusion competed with target permanence

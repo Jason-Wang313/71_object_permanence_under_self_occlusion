@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\caption{Fixed-risk operating points at a 10 percent maximum failure budget over hard splits.}
+\label{tab:fixed-risk}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Method & Success & Coverage & False disp. & Wrong obj. & Id switch \\
+\midrule
+oracle state & 1.000 & 1.000 & 0.000 & 0.000 & 0.000 \\
+random forest occlusion regressor & 0.933 & 0.026 & 0.015 & 0.000 & 0.099 \\
+hist gradient occlusion regressor & 0.800 & 0.009 & 0.054 & 0.000 & 0.100 \\
+pomdp style belief planner & 0.536 & 0.707 & 0.016 & 0.000 & 0.041 \\
+risk averse particle planner & 0.381 & 0.976 & 0.083 & 0.002 & 0.003 \\
+ensemble uncertainty planner & 0.000 & 0.000 & 1.000 & 1.000 & 1.000 \\
+identity consistency tracker & 0.000 & 0.000 & 1.000 & 1.000 & 1.000 \\
+last seen memory & 0.000 & 0.000 & 1.000 & 1.000 & 1.000 \\
+learned occlusion regressor & 0.000 & 0.000 & 1.000 & 1.000 & 1.000 \\
+no self mask ablation & 0.000 & 0.000 & 1.000 & 1.000 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
