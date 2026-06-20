@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\caption{combined and extreme aggregate results. Higher success is better; lower failure metrics are better.}
+\label{tab:combined_and_extreme}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Method & Success & False disp. & Wrong obj. & Id switch & Occ. err. \\
+\midrule
+oracle state & 1.000 & 0.000 & 0.000 & 0.000 & 0.001 \\
+occlusion aware permanence v4 & 0.740 & 0.598 & 0.000 & 0.048 & 0.065 \\
+learned occlusion regressor & 0.719 & 0.211 & 0.000 & 0.544 & 0.082 \\
+occlusion aware permanence v5 & 0.719 & 0.512 & 0.010 & 0.072 & 0.063 \\
+hist gradient occlusion regressor & 0.708 & 0.223 & 0.000 & 0.321 & 0.074 \\
+random forest occlusion regressor & 0.708 & 0.226 & 0.000 & 0.115 & 0.069 \\
+no self mask ablation & 0.656 & 0.640 & 0.000 & 0.072 & 0.078 \\
+pomdp style belief planner & 0.438 & 0.341 & 0.000 & 0.084 & 0.096 \\
+visibility gated kalman & 0.198 & 0.002 & 0.000 & 0.663 & 0.187 \\
+identity consistency tracker & 0.167 & 0.176 & 0.000 & 0.553 & 0.217 \\
+\bottomrule
+\end{tabular}
+\end{table}

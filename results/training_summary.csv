@@ -1,2 +1,2 @@
-training_examples,learned_regressor_train_error,feature_dim
-2200,0.03027,15
+training_examples,ridge_train_error,random_forest_train_error,hist_gradient_train_error,feature_dim
+2400,0.03620,0.02997,0.03222,15

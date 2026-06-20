@@ -6,3 +6,9 @@ __pycache__/
 *.out
 *.fdb_latexmk
 *.fls
+tmp/
+results/dev_*/
+figures/dev_*/
+results/full_run_*.log
+results/full_run_*.err
+results/full_run_*.pid

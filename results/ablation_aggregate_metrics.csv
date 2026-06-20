@@ -1,0 +1,13 @@
+method,success,false_disappearance,wrong_object_contact,identity_switch,occlusion_error,diagnostic_steps
+ablate_no_branch_belief,0.85156,0.52313,0.00000,0.07166,0.05250,0.00000
+ablate_no_contact_update,0.77344,0.52582,0.00000,0.03131,0.05708,0.00000
+ablate_no_distractor_filter,0.85156,0.52915,0.00000,0.08204,0.05291,0.00000
+ablate_no_false_detection_rejection,0.89062,0.52925,0.00000,0.06331,0.05110,0.00000
+ablate_no_identity_filter,0.82031,0.61440,0.00000,0.06684,0.05082,0.00000
+ablate_no_reacquisition_guard,0.90625,0.52419,0.00000,0.04046,0.04943,0.00000
+ablate_no_self_mask,0.80469,0.66090,0.00000,0.05711,0.06650,0.00000
+ablate_no_tail_risk_objective,0.89062,0.52062,0.00781,0.03260,0.05224,0.00000
+ablate_no_uncertainty_inflation,0.86719,0.00000,0.00000,0.05215,0.05006,0.00000
+learned_only_branch,0.81250,0.22824,0.00000,0.03968,0.05673,0.00000
+occlusion_aware_permanence_v4,0.84375,0.61600,0.00000,0.01810,0.05053,0.00000
+occlusion_full_v5,0.86719,0.52849,0.00000,0.02605,0.05192,0.00000

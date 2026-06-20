@@ -1,0 +1,214 @@
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{0.8pt}
+\renewcommand{\arraystretch}{0.88}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\linewidth} >{\raggedright\arraybackslash}p{0.25\linewidth} >{\raggedleft\arraybackslash}p{0.060\linewidth} >{\raggedleft\arraybackslash}p{0.060\linewidth} >{\raggedleft\arraybackslash}p{0.060\linewidth} >{\raggedleft\arraybackslash}p{0.060\linewidth} >{\raggedleft\arraybackslash}p{0.050\linewidth}@{}}
+\caption{Full paired seed differences versus occlusion-aware permanence v5.}\label{tab:full-pairwise}\\
+\toprule
+Split & Comparison & dSucc. & CI95 & dErr. & dFalse & Wins \\
+\midrule
+\endfirsthead
+\toprule
+Split & Comparison & dSucc. & CI95 & dErr. & dFalse & Wins \\
+\midrule
+\endhead
+camera dropout burst & ensemble uncertainty planner & 0.875 & 0.102 & 0.096 & -0.096 & 8 \\
+camera dropout burst & hist gradient occlusion regressor & 0.042 & 0.082 & 0.024 & -0.330 & 3 \\
+camera dropout burst & identity consistency tracker & 0.646 & 0.157 & 0.195 & -0.482 & 8 \\
+camera dropout burst & last seen memory & 0.625 & 0.135 & 0.140 & -0.146 & 8 \\
+camera dropout burst & learned occlusion regressor & 0.271 & 0.122 & 0.037 & -0.323 & 7 \\
+camera dropout burst & no self mask ablation & 0.062 & 0.122 & 0.016 & 0.104 & 4 \\
+camera dropout burst & occlusion aware permanence v4 & 0.083 & 0.087 & 0.011 & 0.076 & 5 \\
+camera dropout burst & oracle state & -0.042 & 0.053 & -0.039 & -0.528 & 0 \\
+camera dropout burst & particle belief tracker & 0.604 & 0.150 & 0.087 & -0.500 & 8 \\
+camera dropout burst & pomdp style belief planner & 0.354 & 0.130 & 0.031 & -0.358 & 8 \\
+camera dropout burst & random forest occlusion regressor & 0.062 & 0.106 & 0.014 & -0.324 & 5 \\
+camera dropout burst & risk averse particle planner & 0.562 & 0.174 & -0.006 & -0.524 & 8 \\
+camera dropout burst & visibility gated kalman & 0.604 & 0.163 & 0.174 & -0.522 & 8 \\
+combined extreme stress & ensemble uncertainty planner & 0.562 & 0.163 & 0.289 & 0.341 & 8 \\
+combined extreme stress & hist gradient occlusion regressor & -0.021 & 0.243 & 0.015 & -0.298 & 3 \\
+combined extreme stress & identity consistency tracker & 0.500 & 0.231 & 0.148 & -0.309 & 7 \\
+combined extreme stress & last seen memory & 0.521 & 0.199 & 0.102 & -0.054 & 7 \\
+combined extreme stress & learned occlusion regressor & -0.042 & 0.220 & 0.022 & -0.294 & 3 \\
+combined extreme stress & no self mask ablation & 0.083 & 0.163 & 0.022 & 0.112 & 3 \\
+combined extreme stress & occlusion aware permanence v4 & -0.042 & 0.135 & 0.006 & 0.083 & 3 \\
+combined extreme stress & oracle state & -0.333 & 0.123 & -0.064 & -0.521 & 0 \\
+combined extreme stress & particle belief tracker & 0.625 & 0.135 & 0.073 & -0.360 & 8 \\
+combined extreme stress & pomdp style belief planner & 0.312 & 0.235 & 0.042 & -0.200 & 6 \\
+combined extreme stress & random forest occlusion regressor & 0.000 & 0.175 & 0.006 & -0.293 & 4 \\
+combined extreme stress & risk averse particle planner & 0.583 & 0.175 & -0.000 & -0.060 & 8 \\
+combined extreme stress & visibility gated kalman & 0.417 & 0.151 & 0.118 & -0.520 & 8 \\
+combined stress & ensemble uncertainty planner & 0.708 & 0.135 & 0.216 & 0.301 & 8 \\
+combined stress & hist gradient occlusion regressor & 0.042 & 0.202 & 0.006 & -0.282 & 5 \\
+combined stress & identity consistency tracker & 0.604 & 0.174 & 0.160 & -0.364 & 8 \\
+combined stress & last seen memory & 0.646 & 0.179 & 0.101 & -0.069 & 8 \\
+combined stress & learned occlusion regressor & 0.042 & 0.220 & 0.016 & -0.309 & 4 \\
+combined stress & no self mask ablation & 0.042 & 0.135 & 0.007 & 0.142 & 5 \\
+combined stress & occlusion aware permanence v4 & 0.000 & 0.239 & -0.003 & 0.089 & 2 \\
+combined stress & oracle state & -0.229 & 0.137 & -0.062 & -0.504 & 0 \\
+combined stress & particle belief tracker & 0.562 & 0.230 & 0.066 & -0.430 & 7 \\
+combined stress & pomdp style belief planner & 0.250 & 0.195 & 0.023 & -0.142 & 6 \\
+combined stress & random forest occlusion regressor & 0.021 & 0.218 & 0.005 & -0.279 & 3 \\
+combined stress & risk averse particle planner & 0.771 & 0.137 & -0.022 & -0.335 & 8 \\
+combined stress & visibility gated kalman & 0.625 & 0.160 & 0.130 & -0.502 & 8 \\
+distractor swap & ensemble uncertainty planner & 0.354 & 0.130 & 0.057 & -0.407 & 8 \\
+distractor swap & hist gradient occlusion regressor & 0.000 & 0.000 & 0.014 & -0.305 & 0 \\
+distractor swap & identity consistency tracker & 0.688 & 0.114 & 0.147 & -0.466 & 8 \\
+distractor swap & last seen memory & 0.542 & 0.193 & 0.089 & -0.117 & 8 \\
+distractor swap & learned occlusion regressor & 0.000 & 0.000 & 0.016 & -0.311 & 0 \\
+distractor swap & no self mask ablation & 0.000 & 0.000 & 0.001 & 0.151 & 0 \\
+distractor swap & occlusion aware permanence v4 & 0.000 & 0.000 & 0.004 & 0.082 & 0 \\
+distractor swap & oracle state & 0.000 & 0.000 & -0.034 & -0.518 & 0 \\
+distractor swap & particle belief tracker & 0.312 & 0.130 & 0.043 & -0.518 & 8 \\
+distractor swap & pomdp style belief planner & 0.354 & 0.096 & 0.013 & -0.502 & 8 \\
+distractor swap & random forest occlusion regressor & 0.000 & 0.000 & 0.009 & -0.307 & 0 \\
+distractor swap & risk averse particle planner & 0.021 & 0.041 & -0.009 & -0.310 & 1 \\
+distractor swap & visibility gated kalman & 0.458 & 0.120 & 0.120 & -0.515 & 8 \\
+embodiment control shift & ensemble uncertainty planner & 0.917 & 0.087 & 0.080 & -0.038 & 8 \\
+embodiment control shift & hist gradient occlusion regressor & 0.083 & 0.107 & 0.014 & -0.307 & 2 \\
+embodiment control shift & identity consistency tracker & 0.708 & 0.102 & 0.170 & -0.471 & 8 \\
+embodiment control shift & last seen memory & 0.562 & 0.106 & 0.099 & -0.112 & 8 \\
+embodiment control shift & learned occlusion regressor & 0.104 & 0.106 & 0.020 & -0.323 & 3 \\
+embodiment control shift & no self mask ablation & 0.000 & 0.000 & 0.010 & 0.114 & 0 \\
+embodiment control shift & occlusion aware permanence v4 & 0.021 & 0.041 & 0.005 & 0.072 & 1 \\
+embodiment control shift & oracle state & 0.000 & 0.000 & -0.038 & -0.527 & 0 \\
+embodiment control shift & particle belief tracker & 0.521 & 0.144 & 0.076 & -0.499 & 8 \\
+embodiment control shift & pomdp style belief planner & 0.396 & 0.195 & 0.030 & -0.422 & 7 \\
+embodiment control shift & random forest occlusion regressor & 0.000 & 0.000 & 0.009 & -0.312 & 0 \\
+embodiment control shift & risk averse particle planner & 0.646 & 0.144 & -0.009 & -0.522 & 8 \\
+embodiment control shift & visibility gated kalman & 0.604 & 0.137 & 0.144 & -0.522 & 8 \\
+end effector occlusion & ensemble uncertainty planner & 0.708 & 0.148 & 0.120 & -0.253 & 8 \\
+end effector occlusion & hist gradient occlusion regressor & -0.021 & 0.041 & 0.004 & -0.300 & 0 \\
+end effector occlusion & identity consistency tracker & 0.667 & 0.123 & 0.173 & -0.508 & 8 \\
+end effector occlusion & last seen memory & 0.604 & 0.185 & 0.095 & -0.101 & 8 \\
+end effector occlusion & learned occlusion regressor & 0.000 & 0.062 & 0.009 & -0.302 & 1 \\
+end effector occlusion & no self mask ablation & -0.021 & 0.041 & -0.003 & 0.143 & 0 \\
+end effector occlusion & occlusion aware permanence v4 & 0.000 & 0.062 & -0.001 & 0.086 & 1 \\
+end effector occlusion & oracle state & -0.021 & 0.041 & -0.036 & -0.529 & 0 \\
+end effector occlusion & particle belief tracker & 0.479 & 0.130 & 0.054 & -0.529 & 8 \\
+end effector occlusion & pomdp style belief planner & 0.396 & 0.204 & 0.010 & -0.417 & 6 \\
+end effector occlusion & random forest occlusion regressor & -0.021 & 0.041 & 0.005 & -0.305 & 0 \\
+end effector occlusion & risk averse particle planner & 0.167 & 0.062 & -0.012 & -0.399 & 7 \\
+end effector occlusion & visibility gated kalman & 0.729 & 0.163 & 0.149 & -0.499 & 8 \\
+false reappearance & ensemble uncertainty planner & 0.854 & 0.096 & 0.109 & -0.089 & 8 \\
+false reappearance & hist gradient occlusion regressor & 0.125 & 0.082 & 0.022 & -0.319 & 5 \\
+false reappearance & identity consistency tracker & 0.667 & 0.123 & 0.149 & -0.404 & 8 \\
+false reappearance & last seen memory & 0.854 & 0.096 & 0.115 & -0.107 & 8 \\
+false reappearance & learned occlusion regressor & 0.208 & 0.102 & 0.027 & -0.315 & 6 \\
+false reappearance & no self mask ablation & 0.083 & 0.087 & 0.007 & 0.132 & 3 \\
+false reappearance & occlusion aware permanence v4 & 0.021 & 0.074 & 0.002 & 0.086 & 2 \\
+false reappearance & oracle state & -0.021 & 0.041 & -0.042 & -0.530 & 0 \\
+false reappearance & particle belief tracker & 0.708 & 0.102 & 0.079 & -0.530 & 8 \\
+false reappearance & pomdp style belief planner & 0.312 & 0.130 & 0.024 & -0.357 & 7 \\
+false reappearance & random forest occlusion regressor & 0.104 & 0.060 & 0.013 & -0.308 & 5 \\
+false reappearance & risk averse particle planner & 0.812 & 0.130 & -0.012 & -0.529 & 8 \\
+false reappearance & visibility gated kalman & 0.750 & 0.175 & 0.138 & -0.530 & 8 \\
+hidden contact drift & ensemble uncertainty planner & 0.896 & 0.086 & 0.086 & 0.000 & 8 \\
+hidden contact drift & hist gradient occlusion regressor & 0.042 & 0.053 & 0.017 & -0.307 & 2 \\
+hidden contact drift & identity consistency tracker & 0.625 & 0.172 & 0.187 & -0.421 & 8 \\
+hidden contact drift & last seen memory & 0.583 & 0.138 & 0.123 & -0.117 & 8 \\
+hidden contact drift & learned occlusion regressor & 0.021 & 0.074 & 0.023 & -0.329 & 2 \\
+hidden contact drift & no self mask ablation & 0.042 & 0.102 & 0.019 & 0.123 & 2 \\
+hidden contact drift & occlusion aware permanence v4 & 0.104 & 0.150 & 0.004 & 0.099 & 3 \\
+hidden contact drift & oracle state & -0.021 & 0.041 & -0.038 & -0.513 & 0 \\
+hidden contact drift & particle belief tracker & 0.521 & 0.190 & 0.091 & -0.381 & 8 \\
+hidden contact drift & pomdp style belief planner & 0.417 & 0.163 & 0.045 & -0.228 & 8 \\
+hidden contact drift & random forest occlusion regressor & -0.021 & 0.041 & 0.013 & -0.312 & 0 \\
+hidden contact drift & risk averse particle planner & 0.750 & 0.123 & -0.006 & -0.458 & 8 \\
+hidden contact drift & visibility gated kalman & 0.729 & 0.137 & 0.157 & -0.508 & 8 \\
+high symmetry layout & ensemble uncertainty planner & 0.833 & 0.087 & 0.072 & -0.136 & 8 \\
+high symmetry layout & hist gradient occlusion regressor & -0.021 & 0.074 & 0.009 & -0.314 & 1 \\
+high symmetry layout & identity consistency tracker & 0.729 & 0.163 & 0.147 & -0.462 & 8 \\
+high symmetry layout & last seen memory & 0.771 & 0.086 & 0.098 & -0.110 & 8 \\
+high symmetry layout & learned occlusion regressor & -0.021 & 0.096 & 0.019 & -0.319 & 2 \\
+high symmetry layout & no self mask ablation & 0.062 & 0.086 & 0.006 & 0.131 & 4 \\
+high symmetry layout & occlusion aware permanence v4 & 0.042 & 0.102 & -0.002 & 0.081 & 2 \\
+high symmetry layout & oracle state & -0.062 & 0.060 & -0.044 & -0.523 & 0 \\
+high symmetry layout & particle belief tracker & 0.542 & 0.135 & 0.069 & -0.518 & 8 \\
+high symmetry layout & pomdp style belief planner & 0.312 & 0.168 & 0.023 & -0.389 & 7 \\
+high symmetry layout & random forest occlusion regressor & -0.000 & 0.087 & 0.007 & -0.308 & 2 \\
+high symmetry layout & risk averse particle planner & 0.667 & 0.107 & -0.013 & -0.518 & 8 \\
+high symmetry layout & visibility gated kalman & 0.625 & 0.229 & 0.131 & -0.522 & 7 \\
+long self occlusion & ensemble uncertainty planner & 0.708 & 0.102 & 0.190 & -0.063 & 8 \\
+long self occlusion & hist gradient occlusion regressor & 0.021 & 0.074 & 0.009 & -0.295 & 2 \\
+long self occlusion & identity consistency tracker & 0.875 & 0.082 & 0.198 & -0.483 & 8 \\
+long self occlusion & last seen memory & 0.604 & 0.150 & 0.103 & -0.084 & 8 \\
+long self occlusion & learned occlusion regressor & 0.042 & 0.082 & 0.009 & -0.296 & 1 \\
+long self occlusion & no self mask ablation & -0.021 & 0.041 & 0.002 & 0.139 & 0 \\
+long self occlusion & occlusion aware permanence v4 & 0.021 & 0.074 & 0.000 & 0.084 & 2 \\
+long self occlusion & oracle state & -0.021 & 0.041 & -0.037 & -0.538 & 0 \\
+long self occlusion & particle belief tracker & 0.708 & 0.120 & 0.064 & -0.524 & 8 \\
+long self occlusion & pomdp style belief planner & 0.104 & 0.060 & 0.005 & -0.223 & 5 \\
+long self occlusion & random forest occlusion regressor & 0.042 & 0.082 & 0.009 & -0.300 & 3 \\
+long self occlusion & risk averse particle planner & 0.125 & 0.120 & -0.013 & -0.402 & 5 \\
+long self occlusion & visibility gated kalman & 0.875 & 0.082 & 0.167 & -0.443 & 8 \\
+near identical distractors & ensemble uncertainty planner & 0.438 & 0.174 & 0.079 & -0.260 & 8 \\
+near identical distractors & hist gradient occlusion regressor & 0.000 & 0.062 & 0.014 & -0.302 & 1 \\
+near identical distractors & identity consistency tracker & 0.792 & 0.148 & 0.146 & -0.432 & 8 \\
+near identical distractors & last seen memory & 0.667 & 0.163 & 0.094 & -0.109 & 8 \\
+near identical distractors & learned occlusion regressor & 0.083 & 0.062 & 0.020 & -0.303 & 4 \\
+near identical distractors & no self mask ablation & 0.000 & 0.062 & 0.002 & 0.154 & 1 \\
+near identical distractors & occlusion aware permanence v4 & -0.021 & 0.041 & 0.001 & 0.091 & 0 \\
+near identical distractors & oracle state & -0.021 & 0.041 & -0.038 & -0.510 & 0 \\
+near identical distractors & particle belief tracker & 0.333 & 0.087 & 0.047 & -0.510 & 8 \\
+near identical distractors & pomdp style belief planner & 0.438 & 0.137 & 0.017 & -0.441 & 8 \\
+near identical distractors & random forest occlusion regressor & 0.000 & 0.062 & 0.009 & -0.297 & 1 \\
+near identical distractors & risk averse particle planner & 0.250 & 0.107 & -0.015 & -0.489 & 7 \\
+near identical distractors & visibility gated kalman & 0.583 & 0.175 & 0.128 & -0.509 & 8 \\
+nominal & ensemble uncertainty planner & 0.083 & 0.062 & 0.085 & -0.388 & 4 \\
+nominal & hist gradient occlusion regressor & 0.000 & 0.000 & 0.001 & -0.243 & 0 \\
+nominal & identity consistency tracker & 0.104 & 0.086 & 0.074 & -0.391 & 4 \\
+nominal & last seen memory & 0.104 & 0.060 & 0.024 & 0.071 & 5 \\
+nominal & learned occlusion regressor & 0.000 & 0.000 & 0.001 & -0.264 & 0 \\
+nominal & no self mask ablation & 0.000 & 0.000 & -0.004 & 0.249 & 0 \\
+nominal & occlusion aware permanence v4 & 0.000 & 0.000 & 0.003 & 0.069 & 0 \\
+nominal & oracle state & 0.000 & 0.000 & -0.019 & -0.394 & 0 \\
+nominal & particle belief tracker & 0.062 & 0.060 & 0.001 & -0.394 & 3 \\
+nominal & pomdp style belief planner & 0.000 & 0.000 & 0.004 & -0.394 & 0 \\
+nominal & random forest occlusion regressor & 0.000 & 0.000 & 0.003 & -0.271 & 0 \\
+nominal & risk averse particle planner & 0.000 & 0.000 & -0.008 & -0.394 & 0 \\
+nominal & visibility gated kalman & 0.208 & 0.053 & 0.064 & -0.304 & 8 \\
+object displacement & ensemble uncertainty planner & 0.500 & 0.214 & 0.045 & -0.273 & 7 \\
+object displacement & hist gradient occlusion regressor & 0.042 & 0.053 & 0.011 & -0.315 & 2 \\
+object displacement & identity consistency tracker & 0.625 & 0.148 & 0.194 & -0.504 & 8 \\
+object displacement & last seen memory & 0.479 & 0.199 & 0.098 & -0.144 & 7 \\
+object displacement & learned occlusion regressor & 0.021 & 0.041 & 0.020 & -0.336 & 1 \\
+object displacement & no self mask ablation & 0.000 & 0.000 & 0.010 & 0.107 & 0 \\
+object displacement & occlusion aware permanence v4 & 0.000 & 0.000 & 0.005 & 0.087 & 0 \\
+object displacement & oracle state & 0.000 & 0.000 & -0.034 & -0.520 & 0 \\
+object displacement & particle belief tracker & 0.417 & 0.231 & 0.064 & -0.475 & 7 \\
+object displacement & pomdp style belief planner & 0.417 & 0.087 & 0.036 & -0.417 & 8 \\
+object displacement & random forest occlusion regressor & 0.021 & 0.041 & 0.010 & -0.307 & 1 \\
+object displacement & risk averse particle planner & 0.375 & 0.102 & -0.010 & -0.520 & 8 \\
+object displacement & visibility gated kalman & 0.479 & 0.114 & 0.148 & -0.499 & 8 \\
+short self occlusion & ensemble uncertainty planner & 0.354 & 0.074 & 0.104 & -0.417 & 8 \\
+short self occlusion & hist gradient occlusion regressor & 0.000 & 0.000 & 0.005 & -0.305 & 0 \\
+short self occlusion & identity consistency tracker & 0.500 & 0.175 & 0.143 & -0.510 & 8 \\
+short self occlusion & last seen memory & 0.250 & 0.123 & 0.051 & -0.099 & 6 \\
+short self occlusion & learned occlusion regressor & 0.000 & 0.000 & 0.006 & -0.303 & 0 \\
+short self occlusion & no self mask ablation & 0.000 & 0.000 & -0.005 & 0.151 & 0 \\
+short self occlusion & occlusion aware permanence v4 & 0.000 & 0.000 & 0.001 & 0.093 & 0 \\
+short self occlusion & oracle state & 0.000 & 0.000 & -0.031 & -0.518 & 0 \\
+short self occlusion & particle belief tracker & 0.104 & 0.086 & 0.017 & -0.518 & 4 \\
+short self occlusion & pomdp style belief planner & 0.396 & 0.137 & 0.009 & -0.518 & 8 \\
+short self occlusion & random forest occlusion regressor & 0.000 & 0.000 & 0.003 & -0.305 & 0 \\
+short self occlusion & risk averse particle planner & 0.000 & 0.000 & -0.011 & -0.517 & 0 \\
+short self occlusion & visibility gated kalman & 0.417 & 0.107 & 0.115 & -0.461 & 8 \\
+stale memory trap & ensemble uncertainty planner & 0.792 & 0.135 & 0.184 & 0.257 & 8 \\
+stale memory trap & hist gradient occlusion regressor & 0.104 & 0.137 & 0.015 & -0.298 & 4 \\
+stale memory trap & identity consistency tracker & 0.688 & 0.258 & 0.187 & -0.457 & 7 \\
+stale memory trap & last seen memory & 0.688 & 0.114 & 0.122 & -0.089 & 8 \\
+stale memory trap & learned occlusion regressor & 0.167 & 0.138 & 0.027 & -0.325 & 5 \\
+stale memory trap & no self mask ablation & 0.083 & 0.151 & 0.023 & 0.118 & 4 \\
+stale memory trap & occlusion aware permanence v4 & 0.021 & 0.130 & -0.002 & 0.084 & 3 \\
+stale memory trap & oracle state & -0.083 & 0.062 & -0.045 & -0.534 & 0 \\
+stale memory trap & particle belief tracker & 0.646 & 0.179 & 0.096 & -0.382 & 8 \\
+stale memory trap & pomdp style belief planner & 0.417 & 0.087 & 0.037 & -0.320 & 8 \\
+stale memory trap & random forest occlusion regressor & 0.083 & 0.107 & 0.011 & -0.298 & 4 \\
+stale memory trap & risk averse particle planner & 0.896 & 0.086 & -0.013 & -0.364 & 8 \\
+stale memory trap & visibility gated kalman & 0.729 & 0.086 & 0.164 & -0.530 & 8 \\
+\bottomrule
+\end{longtable}
+\endgroup
